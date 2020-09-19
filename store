@@ -1,0 +1,25 @@
+"""
+Program: coupon_calculations.py
+Author: Cara Krug
+Last date modified: 09/19/2020
+In this program, you will write a a function accept the amount of the purchase,
+the cash coupon, the percent coupon and it will calculate and return the total order item.
+"""
+
+def calculate_order(price, cash_coupon, percent_coupon):
+    cash_coupon_total = price - cash_coupon
+    percent_coupon_total = cash_coupon_total - (cash_coupon_total * percent_coupon)
+    tax_total = percent_coupon_total + (percent_coupon_total * 0.06)
+    if tax_total < 10:
+        return tax_total + 5.95
+    elif tax_total >= 10 and tax_total < 30:
+        return tax_total + 7.95
+    elif tax_total >= 30 and tax_total < 50:
+        return tax_total + 11.95
+    elif tax_total >= 50:
+        return tax_total
+
+
+
+if __name__ == '__main__':
+    pass
