@@ -1,0 +1,44 @@
+"""
+Program: test_coupon_calculations.py
+Author: Cara Krug
+Last date modified: 09/19/2020
+In this program, you will write a a function accept the amount of the purchase,
+the cash coupon, the percent coupon and it will calculate and return the total order item.
+"""
+import unittest
+from store import coupon_calculations as cc
+
+class MyTestCase(unittest.TestCase):
+    def test_price_under_ten(self):
+        assert cc.calculate_order(9, 5, 0.1)
+        assert cc.calculate_order(9, 5, 0.15)
+        assert cc.calculate_order(9, 5, 0.2)
+        assert cc.calculate_order(9, 10, 0.1)
+        assert cc.calculate_order(9, 10, 0.15)
+        assert cc.calculate_order(9, 10, 0.2)
+
+    def test_price_between_ten_thirty(self):
+        assert cc.calculate_order(28, 5, 0.1)
+        assert cc.calculate_order(28, 5, 0.15)
+        assert cc.calculate_order(28, 5, 0.2)
+        assert cc.calculate_order(28, 10, 0.15)
+        assert cc.calculate_order(28, 10, 0.2)
+
+    def test_price_between_thirty_fifty(self):
+        assert cc.calculate_order(48, 5, 0.1)
+        assert cc.calculate_order(48, 5, 0.15)
+        assert cc.calculate_order(48, 5, 0.2)
+        assert cc.calculate_order(48, 10, 0.1)
+        assert cc.calculate_order(48, 10, 0.15)
+        assert cc.calculate_order(48, 10, 0.2)
+
+    def test_price_50_or_more(self):
+        assert cc.calculate_order(99, 5, 0.1)
+        assert cc.calculate_order(99, 5, 0.15)
+        assert cc.calculate_order(99, 5, 0.2)
+        assert cc.calculate_order(99, 10, 0.1)
+        assert cc.calculate_order(99, 10, 0.15)
+        assert cc.calculate_order(99, 10, 0.2)
+
+if __name__ == '__main__':
+    unittest.main()
